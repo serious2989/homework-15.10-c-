@@ -1,18 +1,23 @@
-﻿int Exponentiation(int A, int B)
-{
-  int result = 1;
-  for(int i = 1; i <= B; i++)
+﻿//Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
+Console.Write("Введите число: ");
+int numberN = Convert.ToInt32(Console.ReadLine());
+
+  int SumNumber(int numberN)
   {
-    result = result * A;
-  }
     
-    return result;
-}
+    int num = Convert.ToString(numberN).Length;
+    int count = 0;
+    int result = 0;
 
-  Console.Write("Введите число A: ");
-  int A = Convert.ToInt32(Console.ReadLine());
-  Console.Write("Введите число B: ");
-  int B = Convert.ToInt32(Console.ReadLine());
+    for (int i = 0; i < num; i++)
 
-  int result = Exponentiation(A, B);
-  Console.WriteLine("Ответ: " + result);
+    {
+      count = numberN - numberN % 10;
+      result = result + (numberN - count);
+      numberN = numberN / 10;
+    }
+   return result;
+  }
+
+int sumNumber = SumNumber(numberN);
+Console.WriteLine("Сумма цифр : " + sumNumber);
