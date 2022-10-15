@@ -1,23 +1,14 @@
-﻿//Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
-Console.Write("Введите число: ");
-int numberN = Convert.ToInt32(Console.ReadLine());
+﻿int [] myarray = new int[8];
 
-  int SumNumber(int numberN)
-  {
-    
-    int num = Convert.ToString(numberN).Length;
-    int count = 0;
-    int result = 0;
-
-    for (int i = 0; i < num; i++)
+    for (int i = 0; i < myarray.Length; i++)
 
     {
-      count = numberN - numberN % 10;
-      result = result + (numberN - count);
-      numberN = numberN / 10;
+       Console.Write($"Введите элемент массива с индексом {i}: ");
+       myarray[1] = int.Parse(Console.ReadLine()); 
     }
-   return result;
-  }
-
-int sumNumber = SumNumber(numberN);
-Console.WriteLine("Сумма цифр : " + sumNumber);
+    Console.WriteLine("Вывод массива:");
+    for (int i = 0; i < myarray.Length; i++)
+    {
+        Console.WriteLine(myarray[i]);
+    }
+    Console.ReadLine();
