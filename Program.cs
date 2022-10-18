@@ -1,25 +1,27 @@
-﻿//task 36
-
-void InputArray(int[] array)
+﻿// task 38
+Console.Clear();
+void InputArray(double[] array)
 {
     for (int i = 0; i < array.Length; i++)
-        array[i] = new Random().Next(-10, 11);
+        array[i] = Math.Round(new Random().NextDouble() * 10, 2);
 }
 
-int CountEventNumbers(int[] array)
+double CountEventNumbers(double[] array)
 {
-    int summa = 0;
-    for (int i = 1; i < array.Length; i+=2)
-        summa = summa + array[i];
-    return summa;
+    double minArray = array[0], maxArray = array[0];
+    for (int i = 1; i < array.Length; i++)
+    {
+        if (maxArray < array[i])
+            maxArray = array[i];
+        else if (minArray > array[i])
+            minArray = array[i];
+    }
+    return maxArray - minArray;
 }
 
-
-Console.Clear();
 Console.Write("Введите кол-во элементов массива: ");
 int n = Convert.ToInt32(Console.ReadLine());
-int[] array = new int[n];
+double[] array = new double[n];
 InputArray(array);
 Console.WriteLine($"[{string.Join(", ", array)}]");
-Console.WriteLine($"Сумма элементов на нечетных позициях: {CountEventNumbers(array)}");
-
+Console.WriteLine($"Разница между макс и мин: {CountEventNumbers(array)}");
