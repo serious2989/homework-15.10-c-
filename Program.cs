@@ -1,14 +1,26 @@
-﻿int [] myarray = new int[8];
+﻿// задача 34
+Console.Clear();
 
-    for (int i = 0; i < myarray.Length; i++)
+void InputArray(int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+        array[i] = new Random().Next(100, 1000);
+}
 
+int CountEventNumbers(int[] array)
+{
+    int count = 0;
+    for (int i = 0; i < array.Length; i++)
     {
-       Console.Write($"Введите элемент массива с индексом {i}: ");
-       myarray[1] = int.Parse(Console.ReadLine()); 
+        if (array[i] % 2 == 0)
+            count++;
     }
-    Console.WriteLine("Вывод массива:");
-    for (int i = 0; i < myarray.Length; i++)
-    {
-        Console.WriteLine(myarray[i]);
-    }
-    Console.ReadLine();
+    return count;
+}
+
+Console.Write("Введите кол-во элементов массива: ");
+int n = Convert.ToInt32(Console.ReadLine());
+int[] array = new int[n];
+InputArray(array);
+Console.WriteLine($"[{string.Join(", ", array)}]");
+Console.WriteLine($"Кол-во четных элементов: {CountEventNumbers(array)}");
