@@ -1,26 +1,25 @@
-﻿// задача 34
-Console.Clear();
+﻿//task 36
 
 void InputArray(int[] array)
 {
     for (int i = 0; i < array.Length; i++)
-        array[i] = new Random().Next(100, 1000);
+        array[i] = new Random().Next(-10, 11);
 }
 
 int CountEventNumbers(int[] array)
 {
-    int count = 0;
-    for (int i = 0; i < array.Length; i++)
-    {
-        if (array[i] % 2 == 0)
-            count++;
-    }
-    return count;
+    int summa = 0;
+    for (int i = 1; i < array.Length; i+=2)
+        summa = summa + array[i];
+    return summa;
 }
 
+
+Console.Clear();
 Console.Write("Введите кол-во элементов массива: ");
 int n = Convert.ToInt32(Console.ReadLine());
 int[] array = new int[n];
 InputArray(array);
 Console.WriteLine($"[{string.Join(", ", array)}]");
-Console.WriteLine($"Кол-во четных элементов: {CountEventNumbers(array)}");
+Console.WriteLine($"Сумма элементов на нечетных позициях: {CountEventNumbers(array)}");
+
